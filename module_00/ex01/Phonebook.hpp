@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Phonebook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: learodri@student.42.fr <learodri>          +#+  +:+       +#+        */
+/*   By: learodri <learodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 12:04:30 by learodri@st       #+#    #+#             */
-/*   Updated: 2024/01/03 16:19:26 by learodri@st      ###   ########.fr       */
+/*   Updated: 2024/01/03 21:29:04 by learodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,20 @@
 # include <iostream>
 # include <string>
 # include "Contact.hpp"
+#include <cstdlib>
+#include <iomanip>
+#include <unistd.h>
 
 class Phonebook
 {
 private:
-    //int i;
+    int i;
     Contact contact[8];
 public:
-    int i;
     Phonebook(int nb);
     ~Phonebook();
     void    add(void);
     
 };
-
-
 
 #endif
