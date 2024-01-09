@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: learodri <learodri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: learodri@student.42.fr <learodri>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 11:55:33 by learodri@st       #+#    #+#             */
-/*   Updated: 2024/01/03 21:49:24 by learodri         ###   ########.fr       */
+/*   Updated: 2024/01/05 16:49:38 by learodri@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,12 @@ int main(void)
 		std::cout << "OPTIONS : ADD - SEARCH - EXIT" << std::endl;
 		getline(std::cin, in);
 		if (in == "ADD")
-		{
             phonebook.add();
-			//system("clear");
-			continue;
-		}
+        if (in == "SEARCH")
+            phonebook.search();
 		if (in == "EXIT")
 			exit(1);
-		else
+		if (in != "EXIT" && in != "SEARCH" && in != "ADD")
 		{
 			std::cout << " wrong option, try it again" << std::endl;
 			sleep(1);
@@ -39,6 +37,5 @@ int main(void)
 		}
 		std::cin.clear();
 	}
-	
 }
  

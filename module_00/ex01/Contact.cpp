@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: learodri <learodri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: learodri@student.42.fr <learodri>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 12:07:09 by learodri@st       #+#    #+#             */
-/*   Updated: 2024/01/03 21:23:28 by learodri         ###   ########.fr       */
+/*   Updated: 2024/01/04 14:47:57 by learodri@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,3 +33,22 @@ void    Contact::number(std::string name){
     this->_number = name;
 }
 
+std::string  Contact::p_first(void){
+    return this->_first;
+}
+
+std::string  Contact::p_last(void){
+    return this->_last;
+}
+
+std::string  Contact::p_nick(void){
+    return this->_nick;
+}
+
+std::string  Contact::p_dark(void){
+    return this->_dark;
+}
+
+std::string  Contact::p_number(void){
+    return this->_number;
+}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: learodri <learodri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: learodri@student.42.fr <learodri>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 12:04:32 by learodri@st       #+#    #+#             */
-/*   Updated: 2024/01/03 21:21:59 by learodri         ###   ########.fr       */
+/*   Updated: 2024/01/04 14:41:44 by learodri@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,13 @@ void    last(std::string name);
 void    nick(std::string name);
 void    dark(std::string name);
 void    number(std::string name);
-int     spit(void);
 
-    
+std::string  p_first(void);
+std::string  p_last(void);
+std::string  p_nick(void);
+std::string  p_dark(void);
+std::string  p_number(void);
+
 };
 
 # endif
