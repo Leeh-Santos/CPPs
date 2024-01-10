@@ -6,7 +6,7 @@
 /*   By: learodri@student.42.fr <learodri>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 11:55:33 by learodri@st       #+#    #+#             */
-/*   Updated: 2024/01/05 16:49:38 by learodri@st      ###   ########.fr       */
+/*   Updated: 2024/01/10 16:25:10 by learodri@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int main(void)
             phonebook.search();
 		if (in == "EXIT")
 			exit(1);
-		if (in != "EXIT" && in != "SEARCH" && in != "ADD")
+		else if (in != "EXIT" && in != "SEARCH" && in != "ADD")
 		{
 			std::cout << " wrong option, try it again" << std::endl;
 			sleep(1);

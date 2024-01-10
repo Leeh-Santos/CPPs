@@ -6,7 +6,7 @@
 /*   By: learodri@student.42.fr <learodri>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 12:04:30 by learodri@st       #+#    #+#             */
-/*   Updated: 2024/01/09 16:24:01 by learodri@st      ###   ########.fr       */
+/*   Updated: 2024/01/10 15:42:59 by learodri@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ public:
     ~Phonebook();
     void    add(void);
     void    search(void);    
+    void    display(int n);
     
 };
 

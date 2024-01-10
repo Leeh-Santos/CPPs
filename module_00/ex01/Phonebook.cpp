@@ -6,7 +6,7 @@
 /*   By: learodri@student.42.fr <learodri>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 11:54:51 by learodri@st       #+#    #+#             */
-/*   Updated: 2024/01/09 16:41:16 by learodri@st      ###   ########.fr       */
+/*   Updated: 2024/01/10 16:23:38 by learodri@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,39 @@ void    Phonebook::search(){
         std::cout << "|-------------------------------------------|" << std::endl;
     }
     
+    //std::cin.clear(); 
+    int n;
+    std::cout << std::endl;
+    std::cout << "Select the contact:" << std::endl;
+    if (std::cin >> n){
+        if (n > 7){
+            std::cout << "index can not be greater than 7" << std::endl;
+            return ;
+        }
+        else{
+            if (!n || contact[n - 1].p_first().empty()){
+                std::cout << "empty index try again" << std::endl;
+                return ;
+            }
+            else
+                display(n - 1);
+        } 
+    }
+    else {
+        std::cin.clear(); 
+        std::cout << "Please enter a valid input, it has to be a number" << std::endl;
+        return ;
+    }
+    
+    std::cin.ignore(1, '\n'); // IGNORE \N FROM INPUT BUFFER
+}
+
+void    Phonebook::display(int n){
+    
+    std::cout << contact[n].p_first() << std::endl;
+    std::cout << contact[n].p_last() << std::endl;
+    std::cout << contact[n].p_nick() << std::endl;
+    std::cout << contact[n].p_number() << std::endl;
+    std::cout << contact[n].p_dark() << std::endl;
     
 }
