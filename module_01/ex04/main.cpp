@@ -26,10 +26,10 @@ int main(int argc, char *argv[]) {
     }
 
     std::ifstream in(argv[1]);
-        std::string out_Name;
-        out_Name = argv[1];
-        out_Name += ".replace";
-        std::ofstream out(out_Name.c_str()); //stupid c++98 doesnt let me just throw the var name,so I need to transform to const char* cstyleshit
+    std::string out_Name;
+    out_Name = argv[1];
+    out_Name += ".replace";
+    std::ofstream out(out_Name.c_str()); //stupid c++98 doesnt let me just throw the var name,so I need to transform to const char* cstyleshit
 
     std::string line; 
     std::string buff; 

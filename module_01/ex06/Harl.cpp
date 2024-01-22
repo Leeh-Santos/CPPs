@@ -36,4 +36,4 @@ void Harl::complain( std::string level ){
             (this->*ptr[i])();
     }
     
-}
+    }
