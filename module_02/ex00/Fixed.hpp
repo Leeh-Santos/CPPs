@@ -16,9 +16,7 @@ public:
     Fixed(const Fixed &obj);
     ~Fixed();
 
-    Fixed &operator=(const Fixed &obj);
-
-
+    void operator=(const Fixed &obj);
     int getRawBits( void ) const;
     void setRawBits( int const raw );
 };

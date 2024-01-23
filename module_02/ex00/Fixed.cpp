@@ -10,10 +10,10 @@ Fixed::Fixed(const Fixed &obj){
     *this = obj; // copy assign being activated 
 }
 
-Fixed& Fixed::operator=(const Fixed &obj){
+void Fixed::operator=(const Fixed &obj){
     std::cout << "copy assignment constructor called" << std::endl;
     this->_fixedPoint = obj.getRawBits(); // this->setRawBits(obj.getRawBits());
-    return (*this);
+    //return (*this); //usualy operator= returns (*this)
 }
 
 Fixed::~Fixed()
