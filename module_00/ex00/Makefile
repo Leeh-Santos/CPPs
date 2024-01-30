@@ -1,34 +1,28 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: learodri@student.42.fr <learodri>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/12/26 15:39:45 by learodri@st       #+#    #+#              #
-#    Updated: 2024/01/30 14:29:01 by learodri@st      ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+SRCS		= megaphone.cpp\
 
-SRC = megaphone.cpp
-OBJ = $(SRC:.cpp=.o)
-CC = c++
-RM = rm -f
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 
-NAME = megaphone
+OBJS		= $(SRCS:.cpp=.o)
+
+CXX			= c++
+
+CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 
+
+NAME		= phonebook
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(CC) $(CPPFLAGS) $(OBJ) -o $(NAME)
+$(NAME): $(OBJS) 
+		$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME) #-fsanitize=address -g
 
-clean:
-	$(RM) $(OBJ)
+RM		= rm -rf
 
-fclean: clean
-	$(RM) $(NAME)
+clean: 
+	$(RM) $(OBJS)
 
-re: fclean $(NAME)
+t: re
+	./phonebook
 
-.PHONY: all clean fclean re
+fclean:
+	$(RM) $(OBJS) $(NAME)
+
+re:fclean all

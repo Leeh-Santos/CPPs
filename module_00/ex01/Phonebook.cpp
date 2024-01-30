@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: learodri@student.42.fr <learodri>          +#+  +:+       +#+        */
+/*   By: learodri <learodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 11:54:51 by learodri@st       #+#    #+#             */
-/*   Updated: 2024/01/10 16:23:38 by learodri@st      ###   ########.fr       */
+/*   Updated: 2024/01/30 19:54:48 by learodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,10 @@ void    Phonebook::add(void)
 
     std::cout << "provide  number:  " << std::endl;
     getline(std::cin, str);
+    if(std::string::npos != str.find_first_of("abcdefghijklmnopqrstuvxywzABCDEFGHIJKLMNOPQRSTUVXYWZ")){
+        std::cout << "only numbers meu parceiro, try again" << std::endl;
+        return;
+    }
     contact[i].number(str);
     std::cout << std::endl;
 
@@ -80,7 +84,7 @@ void    Phonebook::search(){
 
     ilock = i;
     if (flag)
-        ilock = 7;
+        ilock = 8;
     
     std::cout << "|-------------------------------------------|" << std::endl;
 	std::cout << "|     Index|First Name| Last Name|  Nickname|" << std::endl;
@@ -112,8 +116,12 @@ void    Phonebook::search(){
     std::cout << std::endl;
     std::cout << "Select the contact:" << std::endl;
     if (std::cin >> n){
-        if (n > 7){
-            std::cout << "index can not be greater than 7" << std::endl;
+        if (n < 1){
+            std::cout << "index not available try again parceiro" << std::endl;
+            return ;
+        }
+        if (n > 8){
+            std::cout << "index can not be greater than 8" << std::endl;
             return ;
         }
         else{

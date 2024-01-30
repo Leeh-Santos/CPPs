@@ -1,34 +1,29 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: learodri@student.42.fr <learodri>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/01/03 11:53:53 by learodri@st       #+#    #+#              #
-#    Updated: 2024/01/30 14:29:20 by learodri@st      ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+SRCS		= Phonebook.cpp \
+				Contact.cpp \
+				Main.cpp
 
-SRC = Phonebook.cpp Contact.cpp Main.cpp
-OBJ = $(SRC:.cpp=.o)
-CC = c++
-RM = rm -f
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
+OBJS		= $(SRCS:.cpp=.o)
 
-NAME = phonebook
+CXX			= c++
+
+CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 
+
+NAME		= phonebook
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(CC) $(CPPFLAGS) $(OBJ) -o $(NAME)
+$(NAME): $(OBJS) 
+		$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME) #-fsanitize=address -g
 
-clean:
-	$(RM) $(OBJ)
+RM		= rm -rf
 
-fclean: clean
-	$(RM) $(NAME)
+clean: 
+	$(RM) $(OBJS)
 
-re: fclean $(NAME)
+t: re
+	./phonebook
 
-.PHONY: all clean fclean re
+fclean:
+	$(RM) $(OBJS) $(NAME)
+
+re:fclean all
