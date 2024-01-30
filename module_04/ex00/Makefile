@@ -1,4 +1,4 @@
-SRCS		= megaphone.cpp\
+SRCS		= main.cpp\
 
 
 OBJS		= $(SRCS:.cpp=.o)
@@ -7,7 +7,7 @@ CXX			= c++
 
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 
 
-NAME		= megaphone
+NAME		= animals
 
 all: $(NAME)
 
@@ -18,9 +18,6 @@ RM		= rm -rf
 
 clean: 
 	$(RM) $(OBJS)
-
-t: re
-	./phonebook
 
 fclean:
 	$(RM) $(OBJS) $(NAME)
