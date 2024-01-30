@@ -6,13 +6,13 @@
 #    By: learodri@student.42.fr <learodri>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/03 11:53:53 by learodri@st       #+#    #+#              #
-#    Updated: 2024/01/03 15:26:51 by learodri@st      ###   ########.fr        #
+#    Updated: 2024/01/30 14:29:20 by learodri@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC = Phonebook.cpp Contact.cpp Main.cpp
 OBJ = $(SRC:.cpp=.o)
-CC = g++
+CC = c++
 RM = rm -f
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 

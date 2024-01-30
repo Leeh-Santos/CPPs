@@ -6,13 +6,13 @@
 #    By: learodri@student.42.fr <learodri>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/26 15:39:45 by learodri@st       #+#    #+#              #
-#    Updated: 2023/12/26 15:39:47 by learodri@st      ###   ########.fr        #
+#    Updated: 2024/01/30 14:29:01 by learodri@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC = megaphone.cpp
 OBJ = $(SRC:.cpp=.o)
-CC = g++
+CC = c++
 RM = rm -f
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 

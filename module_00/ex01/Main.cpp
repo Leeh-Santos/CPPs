@@ -6,7 +6,7 @@
 /*   By: learodri@student.42.fr <learodri>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 11:55:33 by learodri@st       #+#    #+#             */
-/*   Updated: 2024/01/10 16:25:10 by learodri@st      ###   ########.fr       */
+/*   Updated: 2024/01/30 14:32:21 by learodri@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int main(void)
 	{
 		std::cout << "OPTIONS : ADD - SEARCH - EXIT" << std::endl;
 		getline(std::cin, in);
+		if (std::cin.eof())
+			return 0;
 		if (in == "ADD")
             phonebook.add();
         if (in == "SEARCH")
@@ -31,7 +33,6 @@ int main(void)
 		{
 			std::cout << " wrong option, try it again" << std::endl;
 			sleep(1);
-			system("clear");
 			std::cin.clear();
 			continue;
 		}
