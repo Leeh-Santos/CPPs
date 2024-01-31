@@ -10,9 +10,9 @@ public:
     Animal();
     Animal(const Animal& obj);
     Animal& operator=(const Animal& obj);
-    virtual ~Animal() = 0;
-    virtual void makeSound() = 0;
-    std::string getType();
+    virtual ~Animal();
+    virtual void makeSound() const;
+    std::string getType() const;
 };
 
 #endif

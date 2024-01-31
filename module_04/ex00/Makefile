@@ -1,4 +1,4 @@
-SRCS		= main.cpp\
+SRCS		= main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
 
 
 OBJS		= $(SRCS:.cpp=.o)
@@ -12,7 +12,7 @@ NAME		= animals
 all: $(NAME)
 
 $(NAME): $(OBJS) 
-		$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME) #-fsanitize=address -g
+		$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME) -fsanitize=address -g
 
 RM		= rm -rf
 
