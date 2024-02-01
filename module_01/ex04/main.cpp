@@ -26,6 +26,11 @@ int main(int argc, char *argv[]) {
     }
 
     std::ifstream in(argv[1]);
+
+    if (!in.is_open()){
+        std::cout << "fail to open: " << argv[1] << std::endl;
+        return 1;
+    }
     std::string out_Name;
     out_Name = argv[1];
     out_Name += ".replace";
@@ -34,10 +39,7 @@ int main(int argc, char *argv[]) {
     std::string line; 
     std::string buff; 
 
-    if (!in.is_open()){
-        std::cout << "fail to open: " << argv[1] << std::endl;
-        return 1;
-    }
+    
     if (!out.is_open()){
         std::cout << "fail to open : " << out_Name << std::endl;
         return 1;

@@ -11,7 +11,7 @@ private:
     void    info(void);
     void    warning(void);
     void    error(void);
-    void  (Harl::*ptr[4])();
+    //void  (Harl::*ptr[4])();
 
 public:
     Harl(void);

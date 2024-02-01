@@ -1,27 +1,27 @@
-NAME		= harl
-
 SRCS		= main.cpp Harl.cpp
 
 OBJS		= $(SRCS:.cpp=.o)
 
-RM		= rm -f
+CXX			= c++
 
-CC		= g++ -Wall -Wextra -Werror -g -fsanitize=address -std=c++98
+CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 
 
-.c.o:
-			@$(CC) -c $< -o $@
+NAME		= Harl
 
-all:		$(NAME)
+all: $(NAME)
 
-$(NAME): 	$(OBJS)
-			$(CC) $(OBJS) -o $(NAME)
+$(NAME): $(OBJS) 
+		$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME) -fsanitize=address -g
 
-clean:
-			$(RM) $(OBJS)
+RM		= rm -rf
 
-fclean:		clean
-			$(RM) $(NAME)
+t: re 
+	./sed
 
-re:			fclean all
+clean: 
+	$(RM) $(OBJS)
 
-.PHONY:		all clean re fclean
+fclean:
+	$(RM) $(OBJS) $(NAME)
+
+re:fclean all

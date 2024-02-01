@@ -1,5 +1,5 @@
 SRCS		= main.cpp \
-				zombieHorder.cpp \
+				zombieHorde.cpp \
 				Zombie.cpp \
 
 OBJS		= $(SRCS:.cpp=.o)
