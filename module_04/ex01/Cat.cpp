@@ -13,14 +13,14 @@ Cat::~Cat( void ) {
 
 Cat::Cat ( const Cat& obj) : Animal(){
 	std::cout << "Cat copy constructor called" << std::endl;
-	brain = new Brain();
+	brain = new Brain(); 
 	*this = obj;
 }	
 
 Cat& Cat::operator=( const Cat& obj ) {
 	std::cout << "Cat assignment overload called" << std::endl;
 	type = obj.type;
-	brain = obj.brain;
+	brain = obj.brain; // same memory
 	return (*this);
 }
 
@@ -29,6 +29,5 @@ void	Cat::makeSound( void ) const {
 }
 
 std::string Cat::getType() const{
-	brain->giveidea();
     return(this->type);
 }

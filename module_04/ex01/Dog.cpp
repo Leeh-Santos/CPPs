@@ -19,6 +19,7 @@ Dog::Dog ( const Dog& obj) : Animal(){
 Dog& Dog::operator=( const Dog& obj ) {
 	std::cout << "Dog assignment overload called" << std::endl;
 	type = obj.type;
+	brain = obj.brain;
 	return (*this);
 }
 
