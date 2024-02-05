@@ -37,7 +37,6 @@ std::string Dog::getType() const{
 }
 
 void Dog::print_idea() const{
-	std::string *dale = brain->inside_brain();
-	
-	std::cout << type << " first str in my brain is : " << dale[0] << std::endl;
+
+
 }

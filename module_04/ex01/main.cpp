@@ -12,17 +12,53 @@ int main(){
     const Animal* i = new Cat();
     delete j;//should not create a leak
     delete i;
-    return 0;
+  
+    std::cout << std::endl;
+    std::cout << std::endl;
+    std::cout << std::endl;
+    }
+    {
+    std::cout << " _________________________main test2__________________________" << std::endl;
+    const Animal *animals[10];
+    for(int i = 0; i < 9; i++){
+        if (i % 2 == 0){
+            std::cout << "animal number: " << i << " created" << std::endl;
+            animals[i] = new Dog();
+            animals[i]->print_idea();
+        }
+        else{
+            std::cout << "animal number: " << i << " created" << std::endl;
+            animals[i] = new Cat();
+            animals[i]->print_idea();
+        }
+    }
+
+    for(int i = 0; i < 9; i++){
+        std::cout << "animal number: " << i << " deleted" << std::endl;
+        delete animals[i];
+    }
     }
 
     {
-    std::cout << " _________________________main test__________________________" << std::endl;
-    const Animal* j = new Dog();
-    const Animal* i = new Cat();
+    std::cout << " _________________________other test__________________________" << std::endl;
+    const Animal* x = new Dog();
+    const Animal* y = new Cat();
+    
+    x->print_idea();
+    y->print_idea();
 
-    
-    
-    
+    Cat cat1;
+    Cat cat2;
+
+    cat1 = cat2;
+    x->print_idea();
+    delete x;
+    delete y;
+    std::cout << std::endl;
+    std::cout << std::endl;
+    std::cout << std::endl;
     }
+
+    return 0;
 
 }

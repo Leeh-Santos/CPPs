@@ -37,5 +37,5 @@ std::string Cat::getType() const{
 
 void Cat::print_idea() const{
 	std::string *get = brain->inside_brain();
-	std::cout << type << " first str in my brain is : " << get[0] << std::endl;
+	std::cout << type << " firts str in my brain is : " << get[0] << std::endl;
 }

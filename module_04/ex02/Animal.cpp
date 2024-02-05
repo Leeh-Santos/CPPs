@@ -29,7 +29,3 @@ std::string Animal::getType() const{
 void Animal::makeSound() const{
     std::cout << "noooooo sound" << std::endl;
 }
-
-void Animal::print_idea() const{
-    std::cout << "foi pa ca" << std::endl;
-}
