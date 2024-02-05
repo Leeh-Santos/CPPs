@@ -15,4 +15,7 @@ int main(){
     std::cout << "error" << std::endl;
     speak.complain("ERROR");
 
+    std::cout << "random value string" << std::endl;
+    speak.complain("daleee duro");
+
 }

@@ -16,7 +16,7 @@ $(NAME): $(OBJS)
 RM		= rm -rf
 
 t: re 
-	./sed
+	./harl
 
 clean: 
 	$(RM) $(OBJS)

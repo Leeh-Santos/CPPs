@@ -31,9 +31,13 @@ void Harl::complain( std::string level ){
     std::string str[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
     void (Harl::*ptr[])() = { &Harl::debug, &Harl::info, &Harl::warning, &Harl::error };
 
-    for (int i = 0; i < 5; i++){
+    for (int i = 0; i < 4; i++){
         if (!str[i].compare(level))
+        {
             (this->*ptr[i])();
+            return ;
+        }
     }
+    std::cout << "no strings match" << std::endl;
     
 }

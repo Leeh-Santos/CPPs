@@ -13,7 +13,7 @@ public:
     Brain& operator=(const Brain& obj);
     ~Brain();
 
-    std::string giveidea();
+    std::string *inside_brain();
 };
 
 #endif

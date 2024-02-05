@@ -20,11 +20,11 @@ Brain::Brain(const Brain& obj){
 Brain& Brain::operator=(const Brain& obj){ // if is a brain only copies brain
     std::cout << " Brain assignment called" << std::endl;
     for (int i = 0 ; i < 100 ; i++){
-        ideas[i] = obj.ideas[i];
+        ideas[i] = obj.ideas[i] + " copied";
     }
     return *this;
 }
 
-std::string Brain::giveidea(){
-    return(ideas[0]);
+std::string *Brain::inside_brain(){
+    return(ideas);
 }

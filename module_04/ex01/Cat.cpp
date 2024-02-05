@@ -8,19 +8,22 @@ Cat::Cat( void ) {
 }
 
 Cat::~Cat( void ) {
+	delete brain;
 	std::cout << "Cat Default destructor called" << std::endl;
 }
 
 Cat::Cat ( const Cat& obj) : Animal(){
 	std::cout << "Cat copy constructor called" << std::endl;
-	brain = new Brain(); 
-	*this = obj;
+	type = obj.type;
+	brain = new Brain(*(obj.brain)); 
 }	
 
 Cat& Cat::operator=( const Cat& obj ) {
 	std::cout << "Cat assignment overload called" << std::endl;
+	if (brain)
+		delete brain;
 	type = obj.type;
-	brain = obj.brain; // same memory
+	brain = new Brain(*(obj.brain));
 	return (*this);
 }
 
@@ -30,4 +33,9 @@ void	Cat::makeSound( void ) const {
 
 std::string Cat::getType() const{
     return(this->type);
+}
+
+std::string Cat::print_idea() const{
+	std::string *get = brain->inside_brain();
+	std::cout << type << " firts str in my brain is : " << get[0] << std::endl;
 }
