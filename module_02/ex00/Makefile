@@ -3,7 +3,7 @@ SRCS		= main.cpp \
 
 OBJS		= $(SRCS:.cpp=.o)
 
-CXX			= g++
+CXX			= c++
 
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 
 
@@ -16,8 +16,8 @@ $(NAME): $(OBJS)
 
 RM		= rm -rf
 
-t: re 
-	clear 
+t: re
+	clear
 	./fixed
 
 clean: 

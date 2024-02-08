@@ -1,27 +1,29 @@
-NAME		= fixed
-
-SRCS		= main.cpp Fixed.cpp
+SRCS		= main.cpp \
+				Fixed.cpp \
 
 OBJS		= $(SRCS:.cpp=.o)
 
-RM		= rm -f
+CXX			= c++
 
-CC		= clang++ -Wall -Wextra -Werror -g -fsanitize=address -std=c++98
+CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 
 
-.c.o:
-			@$(CC) -c $< -o $@
+NAME		= fixed
 
-all:		$(NAME)
+all: $(NAME)
 
-$(NAME): 	$(OBJS)
-			$(CC) $(OBJS) -o $(NAME)
+$(NAME): $(OBJS) 
+		$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME) -fsanitize=address -g
 
-clean:
-			$(RM) $(OBJS)
+RM		= rm -rf
 
-fclean:		clean
-			$(RM) $(NAME)
+t: re
+	clear
+	./fixed
 
-re:			fclean all
+clean: 
+	$(RM) $(OBJS)
 
-.PHONY:		all clean re fclean
+fclean:
+	$(RM) $(OBJS) $(NAME)
+
+re:fclean all
