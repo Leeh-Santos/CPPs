@@ -7,7 +7,7 @@
 class MateriaSource : public IMateriaSource
 {
 private:
-    AMateria *materias[4]; 
+    AMateria *_materias[4]; 
 public:
     MateriaSource();
     ~MateriaSource();

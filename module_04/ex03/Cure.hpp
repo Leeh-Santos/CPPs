@@ -1,5 +1,5 @@
-#ifndef ICE_HPP
-# define ICE_HPP
+#ifndef CURE_HPP
+# define CURE_HPP
 
 #include "ICharacter.hpp"
 #include "AMateria.hpp"
