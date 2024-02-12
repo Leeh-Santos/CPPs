@@ -1,27 +1,28 @@
-NAME		= clapTrap
+SRCS		=  main.cpp \
+				ClapTrap.cpp \
 
-SRCS		= main.cpp ClapTrap.cpp
+
+
 
 OBJS		= $(SRCS:.cpp=.o)
 
-RM		= rm -f
+CXX			= c++
 
-CC		= c++ -Wall -Wextra -Werror -g -fsanitize=address -std=c++98
+CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 
 
-.c.o:
-			@$(CC) -c $< -o $@
+NAME		= claptrap
 
-all:		$(NAME)
+all: $(NAME)
 
-$(NAME): 	$(OBJS)
-			$(CC) $(OBJS) -o $(NAME)
+$(NAME): $(OBJS) 
+		$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME) -fsanitize=address -g
 
-clean:
-			$(RM) $(OBJS)
+RM		= rm -rf
 
-fclean:		clean
-			$(RM) $(NAME)
+clean: 
+	$(RM) $(OBJS)
 
-re:			fclean all
+fclean:
+	$(RM) $(OBJS) $(NAME)
 
-.PHONY:		all clean re fclean
+re:fclean all
