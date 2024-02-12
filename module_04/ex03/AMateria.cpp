@@ -1,6 +1,6 @@
 # include "AMateria.hpp" 
 
-AMateria::AMateria(){
+AMateria::AMateria() : _type(""){
 
 }
 

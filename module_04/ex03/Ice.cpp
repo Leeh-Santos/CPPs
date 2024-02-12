@@ -14,6 +14,7 @@ Ice::Ice(const Ice& obj) : AMateria("ice"){
 
 Ice& Ice::operator=(const Ice& obj){
     (void)obj;
+    _type = obj._type;
     return *this;
 }
 

@@ -15,11 +15,10 @@ Character::Character(std::string name) : _name(name){
 }
 
 Character::~Character(){
-    for (int i = 0; i < 3; i++){
+    for (int i = 0; i < 4; i++){
         if (slots[i])
             delete slots[i];
     }
-
 }
 
 Character::Character(const Character& obj){
@@ -35,7 +34,7 @@ Character& Character::operator=(const Character& obj){
         if (slots[i])
             delete slots[i];
         if (obj.slots[i] && this->slots[i] == NULL)
-            this->slots[i] = obj.slots[i];
+            this->slots[i] = obj.slots[i]->clone();
         else 
             this->slots[i] = NULL;
     }
@@ -70,6 +69,7 @@ void Character::use(int idx, ICharacter& target){
         slots[idx]->use(target);
     else
         std::cout << "character slot is empty, not able to use on " << target.getName() << std::endl;
+
 
 }
 
