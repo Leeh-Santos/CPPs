@@ -39,6 +39,10 @@ void    Bureaucrat::Increment(){
         _grade--;
 }
 
+bool	Form::isSigned( void ) const{
+	return _signed;
+}
+
 void Bureaucrat::Decrement(){
     if (_grade + 1 > 150)
         throw Bureaucrat::GradeTooLowException();

@@ -23,7 +23,10 @@ public:
     int     getRequiredGrade() const;
     bool	beSigned( Bureaucrat &obj);
     bool                isSigned(void) const;
+  
 };
+
+std::ostream& operator<<(std::ostream &os, const Form& obj);
 
 
 

@@ -31,3 +31,13 @@ int     Form::getSignGrade() const{
 int    Form::getRequiredGrade() const{
     return _requiredGrade;
 }
+
+bool	Form::beSigned( Bureaucrat &obj){
+    if (_signGrade >= obj.getGrade())
+        _signed = 1;
+}
+
+std::ostream& operator<<(std::ostream &os, Form& obj){
+    os << "name-" << obj.getName() << " required Grade-" << obj.getRequiredGrade() << "exec grade-" << obj.getSignGrade() << std::endl; 
+    return os;
+}

@@ -31,6 +31,7 @@ public:
         const char *what() const throw(); //const char *what() const noexcept override; throw in the end of func is not used anymore
     };
 
+    
 };
 
 std::ostream& operator<<(std::ostream& os, Bureaucrat& obj);
