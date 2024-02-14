@@ -36,7 +36,7 @@ int main(void)
         src->learnMateria(new Cure());
         src->learnMateria(new Ice());
         src->learnMateria(new Cure());
-        src->learnMateria(new Ice()); // MateriaSource can't learn more than 4 materias
+        src->learnMateria(new Ice()); // MateriaSource can't learn more than 4 materias ALREADY FULL
         
         AMateria    *tmp;
         tmp = src->createMateria("fire"); // materia doesn't exist  
@@ -86,7 +86,7 @@ int main(void)
 
         std::cout << std::endl;
         ze->equip(tmp);     // test equip
-        ze->equip(tmp1); // Trying to equip empty materia
+        ze->equip(tmp1); // Trying to equip empty materia - fire
         manel->equip(tmp2);
         manel->equip(tmp3);
         tmp3 = src->createMateria("ice"); // creating a new materia to keep equip in manel
@@ -95,12 +95,12 @@ int main(void)
         tmp3 = src->createMateria("cure");
         manel->equip(tmp3);
         tmp3 = src->createMateria("ice"); 
-        manel->equip(tmp3); // trying to equip more that 4 materia
+        manel->equip(tmp3); // trying to equip more than 4 materia - slots already full
 
         std::cout << std::endl;
         delete tmp3;
         delete src; // delete src to prove the materias passed to char are new copys
-
+        std::cout << "_______use/unequip test_____" << std::endl;
         std::cout << std::endl;
         ze->use(0, *manel); // testing use
         ze->use(2, *manel); // testing in range slot but with no materia
@@ -140,18 +140,18 @@ int main(void)
         std::cout << std::endl;
         Character  *ze2 = new Character(*ze); // create a new character passing the first as parameter
         std::cout << "name: " << ze2->getName() << std::endl; // print char name
-        ze2->use(0, *ze); // use as ze2
+        std::cout << "pau agora meu nego" << std::endl;
+        ze2->use(0, *ze); // ze2 with same spells as ze
         ze2->use(1, *ze);
         ze2->use(2, *ze);
         ze2->use(3, *ze);
-        std::cout << "pau agora meu nego" << std::endl;
+        
         delete ze; // delete original char
         Character   ze3("Ze Luis"); // create a third char to use as target
          
         std::cout << std::endl;
         std::cout << "pau agora meu nego" << std::endl;
         ze2->use(0, ze3); // use ze2 after ze was deleted to prove its a new copy
-        std::cout << "nao chegou" << std::endl;
         ze2->use(1, ze3);
         
         ze2->use(2, ze3);

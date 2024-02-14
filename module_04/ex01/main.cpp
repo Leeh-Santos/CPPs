@@ -50,8 +50,10 @@ int main(){
     Cat cat1;
     Cat cat2;
 
+    std::cout << "____________________trying assignment overload" << std::endl;
+    cat1.print_idea();
     cat1 = cat2;
-    x->print_idea();
+    cat1.print_idea();
     delete x;
     delete y;
     std::cout << std::endl;

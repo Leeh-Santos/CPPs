@@ -83,7 +83,7 @@ void Character::unequip(int idx){
         return ; 
     }
     else {
-        std::cout << "just unequiped " << slots[idx]->getType() << "succesfully" << std::endl;
+        std::cout << "just unequiped materia : " << slots[idx]->getType() << " succesfully" << std::endl;
         slots[idx] = NULL;
     }
 }
