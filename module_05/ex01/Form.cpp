@@ -1,4 +1,6 @@
 # include "Form.hpp"
+# include "Bureaucrat.hpp"
+
 
 Form::Form() : _name("unkown"), _signed(0), _signGrade(0), _requiredGrade(0)
 {
@@ -8,8 +10,7 @@ Form::~Form()
 {
 }
 
-Form::Form( const Form& copy) : _name(copy._name), _signed(copy._signed), _signGrade(copy._signGrade), _requiredGrade(copy._requiredGrade){
-
+Form::Form( const Form& copy) : _name(copy._name), _signed(copy._signed), _requiredGrade(copy._requiredGrade), _signGrade(copy._signGrade){
 }
 
 Form& Form::operator=( const Form& copy ){
@@ -18,9 +19,13 @@ Form& Form::operator=( const Form& copy ){
 }
 
 Form::Form(std::string name, int signgrade, int requiredgrade) : _name(name), _requiredGrade(requiredgrade), _signGrade(signgrade), _signed(0){
+    if (_signGrade > 150 || _requiredGrade > 150)
+        throw Form::GradeTooLowException();
+    else if(_signGrade < 1 || _requiredGrade < 1)
+        throw Form::GradeTooHighException();
 }
 
-const std::string Form::getName(){
+const std::string Form::getName() const{
     return _name;
 }
 
@@ -33,8 +38,25 @@ int    Form::getRequiredGrade() const{
 }
 
 bool	Form::beSigned( Bureaucrat &obj){
-    if (_signGrade >= obj.getGrade())
+    if (obj.getGrade() <= _requiredGrade){
         _signed = 1;
+        return 1;
+    }
+    else
+        throw Form::GradeTooLowException();
+
+}
+
+bool	Form::isSigned( void ) const{
+	return _signed;
+}
+
+const char* Form::GradeTooHighException::what() const throw(){
+    return ("Form Grade is too high");
+}
+
+const char * Form::GradeTooLowException::what() const throw(){
+     return ("Form Grade is too low");
 }
 
 std::ostream& operator<<(std::ostream &os, Form& obj){

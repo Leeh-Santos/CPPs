@@ -1,5 +1,7 @@
 # include "Bureaucrat.hpp"
 
+#include "Form.hpp"
+
 Bureaucrat::Bureaucrat() : _name("unknown"), _grade(150){
 }
 
@@ -32,6 +34,14 @@ const std::string Bureaucrat::getName(){
     return _name;
 }
 
+void   Bureaucrat::signForm( Form& obj){
+    if (obj.beSigned(*this) == 1){
+        std::cout << "Bureaucrat " << _name << " signed form " << obj.getName();  
+    }
+    else
+        std::cout << "Bureaucrat " << _name << " could not sign form " << obj.getName() << " grade low af";
+}
+
 void    Bureaucrat::Increment(){
     if (_grade - 1 <= 0)
         throw Bureaucrat::GradeTooHighException();
@@ -39,9 +49,6 @@ void    Bureaucrat::Increment(){
         _grade--;
 }
 
-bool	Form::isSigned( void ) const{
-	return _signed;
-}
 
 void Bureaucrat::Decrement(){
     if (_grade + 1 > 150)
