@@ -34,7 +34,7 @@ const std::string Bureaucrat::getName(){
     return _name;
 }
 
-void   Bureaucrat::signForm( Form& obj){
+void   Bureaucrat::signForm( Form& obj) const{
     if (obj.beSigned(*this) == 1){
         std::cout << "Bureaucrat " << _name << " signed form " << obj.getName();  
     }
