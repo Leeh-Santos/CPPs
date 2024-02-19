@@ -10,19 +10,19 @@ class Form
 private:
     const std::string _name;
     bool		_signed;
-	const int	_signGrade;
-	const int	_requiredGrade;  
+	int const	_signGrade;
+	int const	_requiredGrade;  
 public:
     Form(/* args */);
     ~Form();
-    Form( const Form& copy);
+    Form( Form const& copy);
 	Form& operator=( const Form& copy );
     Form(std::string name, int signgrade, int requiredgrade);
 
     const std::string getName() const;
     int     getSignGrade() const;
     int     getRequiredGrade() const;
-    bool	beSigned(Bureaucrat &obj);
+    bool	beSigned(Bureaucrat const &obj);
     bool                isSigned(void) const;
 
     class GradeTooHighException : public std::exception{

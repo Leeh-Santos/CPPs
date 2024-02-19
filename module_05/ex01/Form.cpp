@@ -10,7 +10,7 @@ Form::~Form()
 {
 }
 
-Form::Form( const Form& copy) : _name(copy._name), _signed(copy._signed), _requiredGrade(copy._requiredGrade), _signGrade(copy._signGrade){
+Form::Form(  Form const & copy) : _name(copy._name), _signed(copy._signed), _requiredGrade(copy._requiredGrade), _signGrade(copy._signGrade){
 }
 
 Form& Form::operator=( const Form& copy ){
@@ -37,7 +37,7 @@ int    Form::getRequiredGrade() const{
     return _requiredGrade;
 }
 
-bool	Form::beSigned( Bureaucrat &obj){
+bool	Form::beSigned( Bureaucrat const &obj) {
     if (obj.getGrade() <= _requiredGrade){
         _signed = 1;
         return 1;

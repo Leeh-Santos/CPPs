@@ -26,15 +26,15 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& obj){
     return *this;
 }
 
-int Bureaucrat::getGrade(){
+int Bureaucrat::getGrade() const{
     return _grade;
 }
 
-const std::string Bureaucrat::getName(){
+const std::string Bureaucrat::getName() const{
     return _name;
 }
 
-void   Bureaucrat::signForm( Form& obj) const{
+void   Bureaucrat::signForm( Form& obj) const {
     if (obj.beSigned(*this) == 1){
         std::cout << "Bureaucrat " << _name << " signed form " << obj.getName();  
     }
