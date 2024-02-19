@@ -1,6 +1,6 @@
 # include "Bureaucrat.hpp"
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
 Bureaucrat::Bureaucrat() : _name("unknown"), _grade(150){
 }
@@ -34,7 +34,7 @@ const std::string Bureaucrat::getName() const{
     return _name;
 }
 
-void   Bureaucrat::signForm( Form& obj) const {
+void   Bureaucrat::signForm( AForm& obj) const {
     if (obj.beSigned(*this) == 1){
         std::cout << "Bureaucrat " << _name << " signed form " << obj.getName() << std::endl;  
     }

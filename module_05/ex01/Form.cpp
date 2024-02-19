@@ -10,20 +10,22 @@ Form::~Form()
 {
 }
 
-Form::Form(  Form const & copy) : _name(copy._name), _signed(copy._signed), _requiredGrade(copy._requiredGrade), _signGrade(copy._signGrade){
-}
-
-Form& Form::operator=( const Form& copy ){
-    (void)copy;
-    return *this;
-}
-
-Form::Form(std::string name, int signgrade, int requiredgrade) : _name(name), _requiredGrade(requiredgrade), _signGrade(signgrade), _signed(0){
+Form::Form(std::string name, int signgrade, int requiredgrade) : _name(name), _signed(0), _signGrade(signgrade), _requiredGrade(requiredgrade){
     if (_signGrade > 150 || _requiredGrade > 150)
         throw Form::GradeTooLowException();
     else if(_signGrade < 1 || _requiredGrade < 1)
         throw Form::GradeTooHighException();
 }
+
+Form::Form(  Form const & copy) : _name(copy._name), _signed(0), _signGrade(copy._signGrade), _requiredGrade(copy._requiredGrade){
+}
+
+Form& Form::operator=( Form const & copy ){
+    (void)copy;
+    return *this;
+}
+
+
 
 const std::string Form::getName() const{
     return _name;
@@ -38,12 +40,14 @@ int    Form::getRequiredGrade() const{
 }
 
 bool	Form::beSigned( Bureaucrat const &obj) {
-    if (obj.getGrade() <= _requiredGrade){
+    if (obj.getGrade() <= _signGrade){
         _signed = 1;
         return 1;
     }
-    else
+    else {
+        std::cout << obj.getName() << " could not sign: " << getName() << " because of grade issues" << std::endl;
         throw Form::GradeTooLowException();
+    }
 
 }
 
@@ -60,6 +64,6 @@ const char * Form::GradeTooLowException::what() const throw(){
 }
 
 std::ostream& operator<<(std::ostream &os, Form& obj){
-    os << "name-" << obj.getName() << " required Grade-" << obj.getRequiredGrade() << "exec grade-" << obj.getSignGrade() << std::endl; 
+    os << "name:" << obj.getName() << " required Grade: " << obj.getRequiredGrade() << " exec grade: " << obj.getSignGrade() << std::endl; 
     return os;
 }
