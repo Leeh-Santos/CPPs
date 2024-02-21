@@ -11,7 +11,9 @@ private:
     const std::string _name;
     bool		_signed;
 	int const	_signGrade;
-	int const	_requiredGrade;  
+	int const	_requiredGrade;
+protected:
+    std::string _target;
 public:
     AForm(/* args */);
     ~AForm();
@@ -24,6 +26,8 @@ public:
     int     getRequiredGrade() const;
     bool	beSigned(Bureaucrat const &obj);
     bool                isSigned(void) const;
+
+    virtual void execute(Bureaucrat const & executor) const = 0;
 
     class GradeTooHighException : public std::exception{
         public:

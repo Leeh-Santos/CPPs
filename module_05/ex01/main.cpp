@@ -9,7 +9,6 @@ int main(){
         try
         {
             Form f1("formzin", 160, 4);
-            std::cout << "no exception thrown " << std::endl;
         }
         catch(const std::exception& e)
         {

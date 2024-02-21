@@ -24,6 +24,8 @@ public:
     void    Decrement();
     void    signForm(AForm& obj) const;
 
+    void executeForm(AForm const & form);
+
     class GradeTooHighException : public std::exception {
         public :
         const char *what() const throw();

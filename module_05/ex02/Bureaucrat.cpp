@@ -69,3 +69,10 @@ std::ostream& operator<<(std::ostream& os, Bureaucrat& obj){
     os << obj.getName() << ", bureucrat grade " << obj.getGrade() << std::endl;
     return os;
 }
+
+void Bureaucrat::executeForm(AForm const & form){
+    if(_grade <= form.getRequiredGrade() && form.isSigned())
+        std::cout << _name << " executed " << form.getName() << std::endl;
+    else
+        std::cout << _name << " was not able to execute " << form.getName()<< std::endl;
+}
