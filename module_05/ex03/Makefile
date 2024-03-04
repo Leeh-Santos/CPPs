@@ -8,6 +8,7 @@ SRCS		= main.cpp \
 
 OBJS		= $(SRCS:.cpp=.o)
 
+
 CXX			= c++
 
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 
@@ -21,6 +22,8 @@ $(NAME): $(OBJS)
 
 RM		= rm -rf
 
+OB      = treezinha_shrubbery
+
 t: re
 	clear
 	./Bureaucrat
@@ -29,6 +32,6 @@ clean:
 	$(RM) $(OBJS)
 
 fclean:
-	$(RM) $(OBJS) $(NAME)
+	$(RM) $(OBJS) $(NAME) $(OB)
 
 re:fclean all

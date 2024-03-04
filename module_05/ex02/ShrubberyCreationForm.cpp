@@ -53,10 +53,12 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const{
         out.close();
         std::cout << _target << " file has been created by " << executor.getName() << std::endl;
     }
-        else
+        else{
+            std::cout << executor.getName();
             throw ShrubberyCreationForm::exec_error();
+        }
 }
 
 const char* ShrubberyCreationForm::exec_error::what() const throw(){
-    return "not able to exec shitberry, Form no signed or Grade not enough to execute, deu ruim";
+    return " not able to exec shitberry, Form no signed or Grade not enough to execute, deu ruim";
 }

@@ -11,7 +11,7 @@ int main(){
 
         Bureaucrat b1("Cuca Beludo", 145);
         Bureaucrat b2("Armando pinto", 1);
-        ShrubberyCreationForm f1("mybooty");
+        ShrubberyCreationForm f1("shitberry");
         b1.signForm(f1);
         try
         {

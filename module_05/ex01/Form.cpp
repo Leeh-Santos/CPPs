@@ -26,7 +26,6 @@ Form& Form::operator=( Form const & copy ){
 }
 
 
-
 const std::string Form::getName() const{
     return _name;
 }
