@@ -21,4 +21,4 @@ public:
 };
 
 void pseudo(std::string str);
-int get_type(std::string str);
+void dale_char(std::string str);

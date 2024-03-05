@@ -5,8 +5,8 @@ int main(int argc, char *argv[]){
         std::cout << "wrong args bro, try it again" << std::endl;
         return 0;
     }
-    else{
+    else
         ScalarConverter::convert(argv[1]);
-        return 0;
-    }
+        
+    
 }
