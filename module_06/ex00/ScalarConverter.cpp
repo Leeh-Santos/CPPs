@@ -35,8 +35,8 @@ void ScalarConverter::convert(std::string str){
         return dale_int(str);
     else if(is_float(str))
         return dale_float(str);
-    /*else if(is_double(str))
-        return dale_double(str);*/
+    else if(is_double(str))
+        return dale_double(str);
 
 
 
@@ -152,7 +152,6 @@ int is_double(std::string str){
 
     if(str[i] == '+' || str[i] == '-')
         i++;
-    
     while (str[i]){
         if(!std::isdigit(str[i]))
             if(str[i] != '.')
@@ -164,4 +163,20 @@ int is_double(std::string str){
     if (flag > 1 || str[i] != '\0')
         return 0;
     return 1;
+}
+
+void dale_double(std::string str){
+    //double dubs = std::stod(str);
+    double dubs = strtod(str.c_str(), NULL);
+
+	if (dubs >= 32 && dubs <= 127)
+		std::cout << "Char: " << "'" << static_cast<char>(dubs) << "'" << std::endl;
+	else
+		std::cout << "Char: char unprintable or no ascii available" << std::endl;
+	if (dubs > 2147483647 || dubs < -2147483648) 
+		std::cout << "Int: overflow value" << std::endl;
+	else
+		std::cout << "Int: " << static_cast<int>(dubs) << std::endl;
+	std::cout << "Float: " << std::fixed << std::setprecision(1) << static_cast<float>(dubs) << 'f' << std::endl;
+	std::cout << "Double: " << std::fixed << std::setprecision(1) << dubs << std::endl;
 }

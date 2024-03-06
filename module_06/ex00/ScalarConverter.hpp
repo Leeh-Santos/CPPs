@@ -28,3 +28,5 @@ int is_int(std::string str);
 void dale_int(std::string str);
 void    dale_float(std::string str);
 int is_float(std::string str);
+void dale_double(std::string str);
+int is_double(std::string str);
