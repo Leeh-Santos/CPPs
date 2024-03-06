@@ -6,6 +6,7 @@
 #include <cstdlib>
 #include <string>
 #include <iomanip>
+#include <limits>
 
 class ScalarConverter
 {
@@ -22,3 +23,8 @@ public:
 
 void pseudo(std::string str);
 void dale_char(std::string str);
+int is_char(std::string str);
+int is_int(std::string str);
+void dale_int(std::string str);
+void    dale_float(std::string str);
+int is_float(std::string str);
