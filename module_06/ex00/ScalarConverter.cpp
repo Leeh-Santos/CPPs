@@ -38,9 +38,7 @@ void ScalarConverter::convert(std::string str){
     else if(is_double(str))
         return dale_double(str);
 
-
-
-    std::cout << "deu ruim" << std::endl;
+    std::cout << "deu ruim, invalid input meu parceiro" << std::endl;
    
 
 
