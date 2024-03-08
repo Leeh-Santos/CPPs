@@ -1,7 +1,5 @@
-# pragma once
-# include "A.hpp"
-# include "B.hpp"
-# include "C.hpp"
+#ifndef BASE_HPP
+# define BASE_HPP
 
 #include <cstdlib>
 #include <iostream>
@@ -9,10 +7,8 @@
 
 class Base
 {
-private:
-    /* data */
 public:
     virtual ~Base();
 };
 
-
+#endif
