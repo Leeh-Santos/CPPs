@@ -1,14 +1,14 @@
 #pragma once
 #include <iostream>
-#include <string>
+#include <string>   
 
 template <typename T>
 void    iter(T *arr, int len, void (*func)(T&)){
-    if (!arr | len <= 0)
+    if ((!arr) | (len <= 0))
         return;
 
     for (int i = 0 ; i < len ; i++)
-        func[i];
+        func(arr[i]);
 }
 
 template <typename T>
