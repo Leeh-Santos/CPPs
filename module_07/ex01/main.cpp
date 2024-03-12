@@ -2,7 +2,7 @@
 
 int main(){
 
-    std::string str[] = {"meu ovo", "lele", "dale"};
+    std::string str[] = {"meu", "lele", "dale"};
     int nb[] = {1,2,3};
     char bit[] = {'a','b','c'};
     float fl[] = {1.5, 2.3, 3.5};
