@@ -30,10 +30,14 @@ void Span::addNumber(int nb){
         throw std::out_of_range("out of space in array");
 }
 
-int Span::shortestSpan(){
+int Span::shortestSpan(){ // menor diferenca
+    if(vec.size() < 2)
+        throw std::out_of_range("size of array is 0");
+    
+    std::sort(vec.begin(), vec.end());
 
 }
 
-int Span::longestSpan(){
+/*int Span::longestSpan(){ // maior diferenca
 
-}
+}*/

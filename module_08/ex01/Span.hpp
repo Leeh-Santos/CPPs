@@ -19,7 +19,7 @@ public:
     void addNumber(int nb);
 
     int shortestSpan();
-    int longestSpan();
+    //int longestSpan();
 
 
 };
