@@ -18,8 +18,11 @@ public:
     Span& operator=(const Span& obj);
     void addNumber(int nb);
 
+    int longestSpan();
     int shortestSpan();
-    //int longestSpan();
+
+    void filler(std::vector<int>::iterator front, std::vector<int>::iterator back);
+    
 
 
 };
