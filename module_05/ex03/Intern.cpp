@@ -43,6 +43,7 @@ AForm *Intern::makeForm(std::string form, std::string target){
         return new ShrubberyCreationForm(target);
         break;
     default:
+        std::cout << "input form: " << form << " was not found, please do not use any method of this obj" << std::endl;
         std::cout << "no form was found, try again meu parceiro" << std::endl;
         return NULL;    
     }

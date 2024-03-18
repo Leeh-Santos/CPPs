@@ -9,14 +9,14 @@
 class Intern
 {
 private:
-    /* data */
+    
 public:
     Intern(/* args */);
     Intern(const Intern& obj);
     Intern& operator=(const Intern& obj);
-
+     ~Intern();
     AForm *makeForm(std::string form, std::string target);
-    ~Intern();
+   
 };
 
 

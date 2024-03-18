@@ -38,7 +38,7 @@ int Span::shortestSpan(){ // menor diferenca
 
     int mem = 2147483647;
 
-    for (unsigned int i = 0; i < vec.size(); i++)
+    for (unsigned int i = 0; i < (vec.size() - 1); i++)
         mem = std::min(mem, vec[i + 1] - vec[i]);
     return mem;
 }

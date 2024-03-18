@@ -20,8 +20,9 @@ int main(){
 
         std::cout << "president form_______________________" << std::endl;
         f1 = dale.makeForm("presidential", "mom");
-        b1.signForm(*f1);   
+        b1.signForm(*f1);
         f1->execute(b1);
+
         std::cout << '\n';
 
         std::cout << "robot form_______________________" << std::endl;
@@ -42,7 +43,6 @@ int main(){
         delete f1;
         delete f2;
         delete f3;
-        
 
     }
     return 0;
