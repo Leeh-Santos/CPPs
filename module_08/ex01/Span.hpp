@@ -22,6 +22,8 @@ public:
     int shortestSpan();
 
     void filler(std::vector<int>::iterator front, std::vector<int>::iterator back);
+
+    void printer(void);
     
 
 

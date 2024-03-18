@@ -7,8 +7,8 @@ int main(){
 
         try
         {
-            Bureaucrat b1("Thomas Turbano", 1);
-            Bureaucrat b2("Isadora pinto", 150);
+            Bureaucrat b1("Thomas Turban", 1);
+            Bureaucrat b2("Isadora pin", 150);
             std::cout << b1;
             std::cout << b2;
             std::cout << "no exception thrown " << std::endl;

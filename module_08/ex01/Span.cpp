@@ -38,7 +38,7 @@ int Span::shortestSpan(){ // menor diferenca
 
     int mem = 2147483647;
 
-    for (int i = 0; i < vec.size(); i++)
+    for (unsigned int i = 0; i < vec.size(); i++)
         mem = std::min(mem, vec[i + 1] - vec[i]);
     return mem;
 }
@@ -60,4 +60,10 @@ void Span::filler(std::vector<int>::iterator front, std::vector<int>::iterator b
         throw std::out_of_range("not able to add values to array");
 
     vec.insert(vec.end(), front, back);
+}
+
+void Span::printer(void){
+
+    for(unsigned int i = 0; i < vec.size(); i++)
+        std::cout << vec[i] << std::endl;
 }
