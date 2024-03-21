@@ -3,17 +3,25 @@
 # include <iostream>
 # include <fstream>
 # include <map>
-
+#include <string>
+#include <cstdlib>
+#include <string>
+#include <cstring>
+#include <ctime>
 
 class BitcoinExchange
 {
 private:
-    std::map<std::string, double> mapin;
+    std::map<std::string, double> _database;
 public:
     BitcoinExchange(/* args */);
     ~BitcoinExchange();
+
+    static bool valid_file(const std::string str, BitcoinExchange &obj);
+    void print_database();
 };
 
-int valid_file(std::string str);
-void do_conversion();
+//BitcoinExchange coin;
+
+//void do_conversion();
 
