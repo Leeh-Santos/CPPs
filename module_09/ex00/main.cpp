@@ -9,6 +9,6 @@ int main(int argc, char *argv[]){
         return 1;
     }
     if (BitcoinExchange::valid_file(argv[1], coin))
-        coin.print_database();
+        coin.do_conversion(argv[1]);
     
 }

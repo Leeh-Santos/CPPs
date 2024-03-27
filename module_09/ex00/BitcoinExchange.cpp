@@ -37,11 +37,42 @@ void BitcoinExchange::print_database(){
     std::map<std::string, double>::iterator it;
     it = _database.begin();
     while(it != _database.end()){
-        std::cout << it->first << "           " << it->second << std::endl;
+        std::cout << it->first << "  " << it->second << std::endl;
         it++;
     }
 }
 
-/*void do_conversion(){
+bool BitcoinExchange::lineCheck(std::string in){
+    if(in.length() < 14 || in[11] != '|' || !isdigit(in[13]) || !isdigit(in[9]))
+        return 1;
+    for(int i = 0; i < in.length(); i++)
+        if(!isdigit(in[i]) && in[i] != '.' && in[i] != '|' && in[i] != ' ' && in[i] != '-')
+            return 1;
+    return 0;
+    
+}
 
-}*/
+bool BitcoinExchange::dateCheck(std::string in){
+
+}
+
+void BitcoinExchange::do_conversion(const std::string input){
+    std::ifstream in(input.c_str());
+    std::string input_line;
+    int lineflag = 0;
+
+    while(std::getline(in, input_line)){
+        if (!lineflag)
+            if (input_line.compare("date | value")){
+                std::cout << "Error: " << "no date | value detected" << std::endl;
+                lineflag++;
+                continue;
+            }
+        else if (lineCheck(input_line)){
+            std::cout << "Error: " << input_line << " invalid input" << std::endl;
+            continue; 
+        }
+        else if (dateCheck(input_line))
+            std::cout << "Error: " << input_line << " invalid date" << std::endl;
+    }
+}

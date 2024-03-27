@@ -18,6 +18,9 @@ public:
     ~BitcoinExchange();
 
     static bool valid_file(const std::string str, BitcoinExchange &obj);
+    void do_conversion(const std::string input);
+    bool lineCheck(std::string);
+    bool dateCheck(std::string);
     void print_database();
 };
 
