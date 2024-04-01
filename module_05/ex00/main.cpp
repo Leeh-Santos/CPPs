@@ -19,10 +19,10 @@ int main(){
             std::cout << "invalid Bure creation detected, please check values meu parceiro" << std::endl;
         }
 
-        std::cout << "invalid here .........." << std::endl;
-
+        std::cout << "invalid creation here .............:" << std::endl;
         try
         {
+            //Bureaucrat b4("Cuca Beludo", 0);
             Bureaucrat b3("Cuca Beludo", 160);
         }
         catch(const std::exception& e)
@@ -37,50 +37,26 @@ int main(){
         std::cout << '\n';
         std::cout << '\n';
         std::cout << "____________________________valid/invalid increment or decrement_____________________"<< std::endl;
-        Bureaucrat b1("Armando Pinto", 1);
-        Bureaucrat b2("Jacinto Pinto", 150);
+        
         try
         {
-            b1.Increment();
-        }
-        catch(const std::exception& e)
-        {
-            std::cout << e.what() << '\n';
-            std::cout << "not able to incremet meu anjo" << std::endl;
-        }
-        try
-        {
-            b2.Decrement();
-        }
-        catch(const std::exception& e)
-        {
-            std::cout << e.what() << '\n';
-            std::cout << "not able to decremet meu anjo" << std::endl;
-        }
-
-        std::cout << "now it works, no exepction will be thrown" << std::endl;
-
-        try
-        {
-            b2.Increment();
-        }
-        catch(const std::exception& e)
-        {
-            std::cout << e.what() << '\n';
-            std::cout << "not able to incremet meu anjo" << std::endl;
-        }
-        try
-        {
+            Bureaucrat b1("Armando", 1);
+            Bureaucrat b2("Jacinto", 150);
             b1.Decrement();
+            b2.Increment();
+            std::cout << b1;
+            std::cout << b2;
+
+            std::cout << "invalid incremente/decrement :" << std::endl;
+            Bureaucrat b4("fael", 1);
+            b4.Increment();
         }
         catch(const std::exception& e)
         {
             std::cout << e.what() << '\n';
-            std::cout << "not able to decremet meu anjo" << std::endl;
+            std::cout << "not able to incremet meu anjo" << std::endl;
         }
 
-        std::cout << b1;
-        std::cout << b2;
         
     }
 

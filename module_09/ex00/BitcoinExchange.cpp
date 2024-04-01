@@ -45,6 +45,7 @@ void BitcoinExchange::print_database(){
 }
 
 bool BitcoinExchange::lineCheck(std::string in){
+
     if(in.length() < 14 || in[11] != '|' || !isdigit(in[13]) || !isdigit(in[9]))
         return 1;
     for( unsigned int i = 0; i < in.length(); i++)
@@ -92,7 +93,6 @@ bool BitcoinExchange::checkValue(std::string in){
     double nb = std::atof(in.substr(in.find("|") + 1).c_str());
     if (nb > 1000 || nb < 0)
         return 1;
-
     invalue = nb;
     return 0;
 }
@@ -114,13 +114,26 @@ void BitcoinExchange::do_conversion(const std::string input){
             std::cout << "Error: " << input_line << " invalid input" << std::endl;
             continue; 
         }
-        else if (dateCheck(input_line))
+        else if (dateCheck(input_line)){
             std::cout << "Error: " << input_line << " invalid date" << std::endl;
-        else if (checkValue(input_line))
+            continue;
+        }
+        else if (checkValue(input_line)){
             std::cout << "Error: " << input_line << " invalid value" << std::endl;
+            continue;
+        }
+        else {
+            std::map<std::string, double>::iterator it = _database.find(indate);
+            if (it != _database.end()){
+               std::cout << indate << " => " << invalue << " = " << it ->second * invalue << std::endl;
+            }
+            else{
+                it = _database.lower_bound(indate);
+                if (it != _database.begin())
+                    it--;
+                std::cout << indate << " => " << invalue << " = " << it ->second * invalue << std::endl;
+            }
+        }
         
-        std::map<std::string, double>::iterator it = _database.find(indate);
-        if (it == indate.end())
-
     }
 }
