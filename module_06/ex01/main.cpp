@@ -10,8 +10,10 @@ int main(){
     std::cout << d1->y << std::endl;
     std::cout << "pointer at d1" << d1 << std::endl;
     
-    uintptr_t ptr = Serializer::serialize(d1);
+    uintptr_t ptr = Serializer::serialize(d1); 
 	Data *d2 = Serializer::deserialize(ptr);
+    
+
     std::cout << "**deserialized pointer**" << std::endl;
 
     std::cout << d2->x << std::endl;

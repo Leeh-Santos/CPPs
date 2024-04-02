@@ -13,9 +13,9 @@ struct Data
 class Serializer
 {
 private:
-    /* data */
-public:
     Serializer(/* args */);
+public:
+    
     ~Serializer();
     Serializer(const Serializer& obj);
     Serializer& operator=(const Serializer& obj);

@@ -37,6 +37,7 @@ void identify(Base& p){
         A& a = dynamic_cast<A&>(p);
         (void)a;
         std::cout << "Type A class identified" << std::endl;
+        return ;
     }
     catch(const std::exception& e)
     {}
@@ -45,6 +46,7 @@ void identify(Base& p){
         B& b = dynamic_cast<B&>(p);
         (void)b;
         std::cout << "Type B class identified" << std::endl;
+        return ;
     }
     catch(const std::exception& e)
     {}
@@ -53,9 +55,11 @@ void identify(Base& p){
         C& c = dynamic_cast<C&>(p);
         (void)c;
         std::cout << "Type C class identified" << std::endl;
+        return ;
     }
     catch(const std::exception& e)
     {}
+    std::cout << "daaaa fu** is this?" << std::endl;
 }
 
 int main(){
@@ -64,6 +68,7 @@ int main(){
     Base *b1 = generate();
 
     identify(b);
+    identify(*b);
     identify(b1);
     identify(*b1);
     

@@ -38,10 +38,8 @@ void ScalarConverter::convert(std::string str){
     else if(is_double(str))
         return dale_double(str);
 
-    std::cout << "deu ruim, invalid input meu parceiro" << std::endl;
+    std::cout << "error, invalid input meu parceiro" << std::endl;
    
-
-
 }
 
 void pseudo(std::string str){
