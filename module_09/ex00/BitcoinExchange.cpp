@@ -81,7 +81,7 @@ bool BitcoinExchange::dateCheck(std::string in){
     else if (precisecheck(month, day))
         return 1;
 
-    indate = in.substr(0, 9);
+    indate = in.substr(0, 10);
     return 0;
 }
 
@@ -104,9 +104,9 @@ void BitcoinExchange::do_conversion(const std::string input){
 
     while(std::getline(in, input_line)){
         if (!lineflag){
+            lineflag++;
             if (input_line.compare("date | value")){
-                std::cout << "Error: " << "no date | value detected" << std::endl;
-                lineflag++;
+                std::cout << "Error: " << "no date | value detected: " << input_line << std::endl;
                 continue;
             }
         }
