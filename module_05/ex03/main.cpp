@@ -19,9 +19,10 @@ int main(){
         AForm *f3;
 
         std::cout << "president form_______________________" << std::endl;
-        f1 = dale.makeForm("presidential", "mom");
-        b1.signForm(*f1);
-        f1->execute(b1);
+        f1 = dale.makeForm("", "mom");
+        if (f1)
+            b1.signForm(*f1);
+             f1->execute(b1);
 
         std::cout << '\n';
 
