@@ -16,10 +16,13 @@ int main(){
 
     std::cout << "**deserialized pointer**" << std::endl;
 
+    std::cout << d1->x << std::endl;
+    std::cout << d1->y << std::endl;
     std::cout << d2->x << std::endl;
     std::cout << d2->y << std::endl;
 
     delete d1;
+    
 
 
     

@@ -50,7 +50,7 @@ void identify(Base& p){
     }
     catch(const std::exception& e)
     {}
-     try
+    try
     {
         C& c = dynamic_cast<C&>(p);
         (void)c;
