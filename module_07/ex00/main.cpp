@@ -1,4 +1,5 @@
-# include "template.hpp"
+# include "whatever.hpp"
+
 
 int main(){
 
@@ -9,7 +10,7 @@ int main(){
     char a = 'a';
     char b = 'b';
     std::string s1 = "mama";
-    std::string s2 = "huevos";
+    std::string s2 = "huevo";
 
     swap(x , y);
     swap(a, b);

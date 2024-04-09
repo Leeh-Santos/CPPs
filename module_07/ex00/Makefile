@@ -6,7 +6,7 @@ CXX			= c++
 
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 
 
-NAME		= templates
+NAME		= template
 
 all: $(NAME)
 

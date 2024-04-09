@@ -6,7 +6,7 @@
 
 template<class T> 
 Array<T>::Array( void ) {
-	arr = new T[0];
+	arr = NULL;
 	len = 0;
 }
 
