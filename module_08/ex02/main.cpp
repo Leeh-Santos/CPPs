@@ -35,7 +35,7 @@ int main(){
         strstack.push("str0");
         strstack.push("str1");
         strstack.push("str3");
-        std::cout << strstack.size() << std::endl;
+        std::cout << strstack.size() << std::endl; //3
         std::cout << strstack.top() << std::endl;
         strstack.push("str4");
         strstack.push("str5");
@@ -43,7 +43,7 @@ int main(){
 
         MutantStack<std::string>::iterator it = strstack.begin();
         MutantStack<std::string>::iterator it2 = strstack.end();
-
+        std::cout << "printing stack :" << '\n';
         while (it != it2)
         {
             std::cout << *it << std::endl;

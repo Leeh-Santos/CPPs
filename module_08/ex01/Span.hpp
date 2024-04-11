@@ -9,9 +9,9 @@ class Span
 private:
     unsigned int _N;
     std::vector<int> vec;
+    Span();
 
 public:
-    Span();
     ~Span();
     Span(unsigned int N);
     Span(const Span& obj);

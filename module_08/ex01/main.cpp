@@ -5,10 +5,18 @@ int main(){
     {
         std::cout << "___________________ fill fuction iteretor________________" << std::endl;
         Span obj(5);
-        obj.addNumber(1);
-        obj.addNumber(2);
-        obj.addNumber(3);
 
+        try {
+            obj.addNumber(1);
+            obj.addNumber(2);
+            obj.addNumber(3);
+        }
+        catch(const std::exception& e)
+        {
+            std::cerr << e.what() << '\n';
+        }
+    
+        
         std::vector<int> v1;
 
         v1.push_back(4);
