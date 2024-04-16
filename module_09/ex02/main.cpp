@@ -9,5 +9,7 @@ int main(int argc, char *argv[]){
 
     std::vector<std::string> args(argv, argv + argc); // range constructor
     checkInput(args);
+    PmergeMe merge(args);
+    merge.m_init();
     
 }
