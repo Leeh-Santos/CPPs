@@ -12,14 +12,6 @@ PmergeMe::PmergeMe(std::vector<std::string> &vec)
         std::cout << "Please provide more numbers meu parceiro" << std::endl;
         exit(1);
     }
-
-    /*for (std::vector<int>::iterator it = main_vector.begin() ; it != main_vector.end() ; it++){
-        std::cout << *it << std::endl;
-    }
-    std::cout << "______list________" << std::endl; 
-    for (std::list<int>::iterator it = main_list.begin() ; it != main_list.end() ; it++){
-        std::cout << *it << std::endl;
-    }*/
 }
 
 PmergeMe::~PmergeMe()
@@ -53,9 +45,31 @@ void checkInput( std::vector<std::string> &args){
     }*/
 }
 
+ void PmergeMe::getSmallElement(std::vector<int> vec){
+    if(vec.size() % 2)
+        vec.push_back(-1);
+    
+    std::vector<std::pair<int, int> > vecpair;
+    for (unsigned int i = 0 ; i < vec.size() - 1 ; i += 2)
+        vecpair.push_back(std::make_pair(vec[i], vec[i + 1]));
+
+    smallestpairnb = 0;
+
+    for (unsigned int  i = 0 ; i <= (vecpair.size() - 1) ; i++){
+        for (unsigned int  k = 0 ; k <= (vecpair.size() - 1) ; k++)
+            if(vecpair[i].first < vecpair[k].first){
+                if(vecpair[i].second == -1)
+                    continue;
+                smallestpairnb = vecpair[i].second;
+            }
+    } 
+    std::cout << smallestpairnb << std::endl;
+ }
+
 void PmergeMe::m_init(){
 
     std::cout << "Before : ";
+    getSmallElement(main_vector);
     print_container(0);
 
     //int begin = std::clock();
@@ -77,17 +91,6 @@ void PmergeMe::fordzin(std::vector<int> &m_vector){
     m_vector.clear();
     std::vector<int> unordered;
 
-    /*for (i = 0; i < m_vector.size() - 1 ; (i + 2)){
-        if (tmp[i] > tmp[i + 1]){
-            m_vector.push_back(tmp[i]);         
-            unordered.push_back(tmp[i + 1]);
-        }
-        else{
-            m_vector.push_back(tmp[i + 1]);
-            unordered.push_back(tmp[i]);
-        }
-    }*/
-
     while (i < size)
     {
         if (tmp[i] > tmp[i + 1]){
@@ -103,10 +106,10 @@ void PmergeMe::fordzin(std::vector<int> &m_vector){
     if(tmp.size() % 2)
         m_vector.push_back(tmp[i]);
 
-    fordzin(m_vector);
-    std::cout << "vaaaaaaai carai" << std::endl;
-    printVector(m_vector);
-    std::cout << "cabou" << std::endl; 
+    fordzin(m_vector); //first half sorted
+ 
+    //print_container(0); 
+
     binaryJacobsthalInsert(m_vector, unordered);
 
 }
@@ -128,16 +131,6 @@ void	PmergeMe::binaryJacobsthalInsert(std::vector<int>& base, std::vector<int>& 
 	} while (jacobsthal[index] < (int)merge.size());
 }
 
-
-void	PmergeMe::printVector(std::vector<int> vector) {
-
-	int	limit = vector.size() - 1;
-
-	for (int i = 0; i < limit; i++) {
-		std::cout << vector[i] << " ";
-	}
-	std::cout << *(vector.end() - 1);
-}
 
 void PmergeMe::print_container(int x){
 

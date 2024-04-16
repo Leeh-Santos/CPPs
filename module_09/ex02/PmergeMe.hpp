@@ -6,6 +6,7 @@
 #include <algorithm>
 # include <list> 
 # include <ctime>
+#include <utility> 
 
 class PmergeMe
 {
@@ -13,6 +14,7 @@ private:
     static const int	jacobsthal[35];
     std::vector<int> main_vector;
     std::list<int> main_list;
+    int smallestpairnb;
        
 public:
     
@@ -22,9 +24,10 @@ public:
     void print_container(int);
     void fordzin(std::vector<int> &);
     void fordzin(std::list<int> &);
+    void getSmallElement(std::vector<int>);
 
     void	binaryJacobsthalInsert(std::vector<int>& base, std::vector<int>& merge);
-    void printVector(std::vector<int> vector);
+    
 };
 
 void checkInput( std::vector<std::string> &args);
