@@ -50,20 +50,20 @@ void checkInput( std::vector<std::string> &args){
         vec.push_back(-1);
     
     std::vector<std::pair<int, int> > vecpair;
-    for (unsigned int i = 0 ; i < vec.size() - 1 ; i += 2)
+    for (unsigned int i = 0 ; i <= (vec.size() - 1) ; i += 2)
         vecpair.push_back(std::make_pair(vec[i], vec[i + 1]));
 
-    smallestpairnb = 0;
+    std::pair<int, int> smallestpair = std::make_pair(2147483647, 0);
 
     for (unsigned int  i = 0 ; i <= (vecpair.size() - 1) ; i++){
-        for (unsigned int  k = 0 ; k <= (vecpair.size() - 1) ; k++)
-            if(vecpair[i].first < vecpair[k].first){
-                if(vecpair[i].second == -1)
-                    continue;
-                smallestpairnb = vecpair[i].second;
-            }
-    } 
-    std::cout << smallestpairnb << std::endl;
+        if (vecpair[i].first < smallestpair.first){
+            if(vecpair[i].second == -1)
+                continue;
+            smallestpair = vecpair[i];
+        }
+    }
+
+    smallestpairnb = smallestpair.second;
  }
 
 void PmergeMe::m_init(){
@@ -75,6 +75,10 @@ void PmergeMe::m_init(){
     //int begin = std::clock();
     this->fordzin(main_vector);
     //int done = std::clock();
+
+    /*std::cout << '\n';
+    std::cout << "semi after : ";
+    print_container(0); */
 
 
 }
@@ -114,21 +118,24 @@ void PmergeMe::fordzin(std::vector<int> &m_vector){
 
 }
 
-void	PmergeMe::binaryJacobsthalInsert(std::vector<int>& base, std::vector<int>& merge) {
+void	PmergeMe::binaryJacobsthalInsert(std::vector<int>& main, std::vector<int>& smaller) {
 
+    main.insert(main.begin(), smallestpairnb);
+    std::vector<int>::iterator it = std::find(smaller.begin(), smaller.end(), smallestpairnb);
+    smaller.erase(it);
 	std::vector<int>::iterator	where;
 	int	index, current;
 
 	index = 0;
 	do {
 		index++;
-		current = (jacobsthal[index] < (int)merge.size() ? jacobsthal[index] : merge.size() - 1);
+		current = (jacobsthal[index] < (int)smaller.size() ? jacobsthal[index] : smaller.size() - 1);
 		while (current > jacobsthal[index - 1]) {
-			where = std::lower_bound(base.begin(), base.end(), merge[current]);
-			base.insert(where, merge[current]);
+			where = std::lower_bound(main.begin(), main.end(), smaller[current]);
+			main.insert(where, smaller[current]);
 			current--;
 		}
-	} while (jacobsthal[index] < (int)merge.size());
+	} while (jacobsthal[index] < (int)smaller.size());
 }
 
 
