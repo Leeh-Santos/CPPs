@@ -68,14 +68,16 @@ void checkInput( std::vector<std::string> &args){
 
 void PmergeMe::m_init(){
 
-    std::cout << "Before : ";
+    //std::cout << "Before : ";
     getSmallElement(main_vector);
-    print_container(0);
+    //print_container(0);
 
     //int begin = std::clock();
     this->fordzin(main_vector);
     //int done = std::clock();
 
+    print_vec(main_vector);
+    print_vec(unordered);
     /*std::cout << '\n';
     std::cout << "semi after : ";
     print_container(0); */
@@ -83,18 +85,40 @@ void PmergeMe::m_init(){
 
 }
 
-void PmergeMe::fordzin(std::vector<int> &m_vector){
+void PmergeMe::fordzin(std::vector<int> &vec){
 
-    
-    if (m_vector.size() < 2)
+     if (vec.size() <= 1)
+        return; 
+
+    unsigned int pivot_index = vec.size() / 2;
+    int pivot_value = vec[pivot_index];
+
+    std::vector<int> less_than_pivot;
+    std::vector<int> greater_than_pivot;
+    for (unsigned int i = 0; i < vec.size(); ++i) {
+        if (i == pivot_index)
+            continue;
+        if (vec[i] <= pivot_value)
+            less_than_pivot.push_back(vec[i]);
+        else
+            greater_than_pivot.push_back(vec[i]);
+    }
+
+    fordzin(less_than_pivot);
+    fordzin(greater_than_pivot);
+
+    vec.clear();
+    vec.insert(vec.end(), less_than_pivot.begin(), less_than_pivot.end());
+    vec.push_back(pivot_value);
+    vec.insert(vec.end(), greater_than_pivot.begin(), greater_than_pivot.end());
+    /*if (m_vector.size() < 2)
         return ;
 
     unsigned int size = m_vector.size() - 1;
     unsigned int i = 0;
     std::vector<int> tmp = m_vector;
     m_vector.clear();
-    std::vector<int> unordered;
-
+   
     while (i < size)
     {
         if (tmp[i] > tmp[i + 1]){
@@ -112,9 +136,7 @@ void PmergeMe::fordzin(std::vector<int> &m_vector){
 
     fordzin(m_vector); //first half sorted
  
-    //print_container(0); 
-
-    binaryJacobsthalInsert(m_vector, unordered);
+    //binaryJacobsthalInsert(m_vector, unordered);*/
 
 }
 
@@ -122,7 +144,18 @@ void	PmergeMe::binaryJacobsthalInsert(std::vector<int>& main, std::vector<int>& 
 
     main.insert(main.begin(), smallestpairnb);
     std::vector<int>::iterator it = std::find(smaller.begin(), smaller.end(), smallestpairnb);
-    smaller.erase(it);
+    (void)it;
+    //smaller.erase(it);
+
+    std::cout << "main :" << std::endl;
+    for (std::vector<int>::iterator it = main.begin() ; it != main.end() ; it++)
+            std::cout << *it << " ";
+    std::cout << "smaller :" << std::endl;
+    for (std::vector<int>::iterator it = smaller.begin() ; it != smaller.end() ; it++)
+            std::cout << *it << " ";
+    std::cout << std::endl;
+
+
 	std::vector<int>::iterator	where;
 	int	index, current;
 
@@ -148,4 +181,13 @@ void PmergeMe::print_container(int x){
     else 
     for (std::list<int>::iterator it = main_list.begin() ; it != main_list.end() ; it++)
         std::cout << *it << " ";   
+}
+
+void PmergeMe::print_vec(std::vector<int> vec){
+
+    std::cout << "printing vector :" << std::endl;
+    for (std::vector<int>::iterator it = vec.begin() ; it != vec.end() ; it++)
+            std::cout << *it << " ";
+    std::cout << std::endl;
+
 }
