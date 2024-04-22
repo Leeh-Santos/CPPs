@@ -12,6 +12,7 @@ PmergeMe::PmergeMe(std::vector<std::string> &vec)
         std::cout << "Please provide more numbers meu parceiro" << std::endl;
         exit(1);
     }
+
 }
 
 PmergeMe::~PmergeMe()
@@ -63,21 +64,28 @@ void checkInput( std::vector<std::string> &args){
         }
     }
 
-    smallestpairnb = smallestpair.second;
+    if (smallestpair.first < smallestpair.second) // smalles already inserted in main chain
+        smallestpairnb = smallestpair.first;
+    else
+        smallestpairnb = smallestpair.second;
  }
 
 void PmergeMe::m_init(){
 
     //std::cout << "Before : ";
     getSmallElement(main_vector);
-    //print_container(0);
+
 
     //int begin = std::clock();
-    this->fordzin(main_vector);
+    this->divideNconquer(main_vector);
+    this->recursive_main(main_vector);
+    insert_smallnb();
+    
     //int done = std::clock();
 
     print_vec(main_vector);
-    print_vec(unordered);
+    print_vec(small_vector);
+   
     /*std::cout << '\n';
     std::cout << "semi after : ";
     print_container(0); */
@@ -85,7 +93,7 @@ void PmergeMe::m_init(){
 
 }
 
-void PmergeMe::fordzin(std::vector<int> &vec){
+void PmergeMe::recursive_main(std::vector<int> &vec){
 
      if (vec.size() <= 1)
         return; 
@@ -104,39 +112,13 @@ void PmergeMe::fordzin(std::vector<int> &vec){
             greater_than_pivot.push_back(vec[i]);
     }
 
-    fordzin(less_than_pivot);
-    fordzin(greater_than_pivot);
+    recursive_main(less_than_pivot);
+    recursive_main(greater_than_pivot);
 
     vec.clear();
     vec.insert(vec.end(), less_than_pivot.begin(), less_than_pivot.end());
     vec.push_back(pivot_value);
     vec.insert(vec.end(), greater_than_pivot.begin(), greater_than_pivot.end());
-    /*if (m_vector.size() < 2)
-        return ;
-
-    unsigned int size = m_vector.size() - 1;
-    unsigned int i = 0;
-    std::vector<int> tmp = m_vector;
-    m_vector.clear();
-   
-    while (i < size)
-    {
-        if (tmp[i] > tmp[i + 1]){
-            m_vector.push_back(tmp[i]);         
-            unordered.push_back(tmp[i + 1]);
-        }
-        else{
-            m_vector.push_back(tmp[i + 1]);
-            unordered.push_back(tmp[i]);
-        }
-        i += 2;
-    }
-    if(tmp.size() % 2)
-        m_vector.push_back(tmp[i]);
-
-    fordzin(m_vector); //first half sorted
- 
-    //binaryJacobsthalInsert(m_vector, unordered);*/
 
 }
 
@@ -171,6 +153,35 @@ void	PmergeMe::binaryJacobsthalInsert(std::vector<int>& main, std::vector<int>& 
 	} while (jacobsthal[index] < (int)smaller.size());
 }
 
+void    PmergeMe::divideNconquer(std::vector<int> &vec){
+
+    unsigned int size = vec.size() - 1;
+    unsigned int i = 0;
+    std::vector<int> tmp = vec;
+    vec.clear();
+   
+    while (i < size)
+    {
+        if (tmp[i] > tmp[i + 1]){
+            vec.push_back(tmp[i]);         
+            small_vector.push_back(tmp[i + 1]);
+        }
+        else{
+            vec.push_back(tmp[i + 1]);
+            small_vector.push_back(tmp[i]);
+        }
+        i += 2;
+    }
+    if(tmp.size() % 2)
+        vec.push_back(tmp[i]);
+}
+
+void PmergeMe::insert_smallnb(){
+    main_vector.insert(main_vector.begin(), smallestpairnb);
+
+    std::vector<int>::iterator it = std::find(small_vector.begin(), small_vector.end() ,smallestpairnb);
+    small_vector.erase(it);
+}
 
 void PmergeMe::print_container(int x){
 
