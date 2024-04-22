@@ -64,7 +64,7 @@ void checkInput( std::vector<std::string> &args){
         }
     }
 
-    if (smallestpair.first < smallestpair.second) // smalles already inserted in main chain
+    if (smallestpair.first < smallestpair.second) // get smallest nb from the pair
         smallestpairnb = smallestpair.first;
     else
         smallestpairnb = smallestpair.second;
