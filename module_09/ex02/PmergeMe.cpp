@@ -19,14 +19,6 @@ PmergeMe::~PmergeMe()
 {
 }
 
-const int PmergeMe::jacobsthal[35] = {
-	-1, 0, 1, 1, 3, 5, 11, 21, 43, 85, 171, 341, 683, 1365, 2731, 5461, 10923,
-	21845, 43691, 87381, 174763, 349525, 699051, 1398101, 2796203, 5592405,
-	11184811, 22369621, 44739243, 89478485, 178956971, 357913941, 715827883,
-	1431655765
-};
-
-
 void checkInput( std::vector<std::string> &args){
 
     std::string::iterator it;
@@ -122,33 +114,25 @@ void PmergeMe::recursive_main(std::vector<int> &vec){
 
 }
 
+const int PmergeMe::jacobsthal[35] = {
+	-1, 0, 1, 1, 3, 5, 11, 21, 43, 85, 171, 341, 683, 1365, 2731, 5461, 10923,
+	21845, 43691, 87381, 174763, 349525, 699051, 1398101, 2796203, 5592405,
+	11184811, 22369621, 44739243, 89478485, 178956971, 357913941, 715827883,
+	1431655765
+};
+
 void	PmergeMe::binaryJacobsthalInsert(std::vector<int>& main, std::vector<int>& smaller) {
-
-    main.insert(main.begin(), smallestpairnb);
-    std::vector<int>::iterator it = std::find(smaller.begin(), smaller.end(), smallestpairnb);
-    (void)it;
-    //smaller.erase(it);
-
-    std::cout << "main :" << std::endl;
-    for (std::vector<int>::iterator it = main.begin() ; it != main.end() ; it++)
-            std::cout << *it << " ";
-    std::cout << "smaller :" << std::endl;
-    for (std::vector<int>::iterator it = smaller.begin() ; it != smaller.end() ; it++)
-            std::cout << *it << " ";
-    std::cout << std::endl;
-
 
 	std::vector<int>::iterator	where;
 	int	index, current;
-
 	index = 0;
 	do {
 		index++;
 		current = (jacobsthal[index] < (int)smaller.size() ? jacobsthal[index] : smaller.size() - 1);
 		while (current > jacobsthal[index - 1]) {
 			where = std::lower_bound(main.begin(), main.end(), smaller[current]);
-			main.insert(where, smaller[current]);
-			current--;
+			main.insert(where, smaller[current]); // vai para o fim 
+			current--; //diminiu
 		}
 	} while (jacobsthal[index] < (int)smaller.size());
 }
