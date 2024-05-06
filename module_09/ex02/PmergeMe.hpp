@@ -32,12 +32,14 @@ public:
 
     void recursive_main(std::vector<int> &);
     void recursive_main(std::list<int> &);
+
     void divideNconquer(std::vector<int> &vec);
     void divideNconquer(std::list<int> &vec);
-
-    void insert_smallnb();
+    
+    void insert_smallnb(int);
 
     void jacobsthalInsert(std::vector<int> &bigVec, std::vector<int> &smallVec);
+    void jacobsthalInsert(std::list<int> &bigVec, std::list<int> &smallVec);
     int jacobsthal(int n);
 };
 
