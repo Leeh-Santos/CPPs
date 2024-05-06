@@ -64,25 +64,24 @@ void checkInput( std::vector<std::string> &args){
 
 void PmergeMe::m_init(){
 
-    //std::cout << "Before : ";
-    getSmallElement(main_vector);
+    std::cout << "Before : ";
+    print_container(0);
+    std::cout << '\n';
+    std::time_t begin = std::clock();
+    getSmallElement(main_vector); 
+    this->divideNconquer(main_vector);//split first the pairs
+    this->recursive_main(main_vector); // recursive only main chain
+    insert_smallnb(); // insert smallest into main chain
+    jacobsthalInsert(main_vector, small_vector); // binary + jacobsthal
+    std::time_t done = std::clock();
+    double vector_process = (double)(done - begin) / CLOCKS_PER_SEC;
+    std::cout << "After : ";
+    print_container(0);
 
-
-    //int begin = std::clock();
-    this->divideNconquer(main_vector);
-    this->recursive_main(main_vector);
-    insert_smallnb();
-    
-    //int done = std::clock();
-
-    print_vec(main_vector);
-    print_vec(small_vector);
+    //********LIST Pmerge part****************
+    std::time_t begin2 = std::clock();
+    this->divideNconquer(main_list);
    
-    /*std::cout << '\n';
-    std::cout << "semi after : ";
-    print_container(0); */
-
-
 }
 
 void PmergeMe::recursive_main(std::vector<int> &vec){
@@ -114,27 +113,37 @@ void PmergeMe::recursive_main(std::vector<int> &vec){
 
 }
 
-const int PmergeMe::jacobsthal[35] = {
-	-1, 0, 1, 1, 3, 5, 11, 21, 43, 85, 171, 341, 683, 1365, 2731, 5461, 10923,
-	21845, 43691, 87381, 174763, 349525, 699051, 1398101, 2796203, 5592405,
-	11184811, 22369621, 44739243, 89478485, 178956971, 357913941, 715827883,
-	1431655765
-};
+int PmergeMe::jacobsthal(int n) {
+    if (n == 0)
+        return 0;
+    else if (n == 1)
+        return 1;
+    else
+        return jacobsthal(n - 1) + 2 * jacobsthal(n - 2);
+}
 
-void	PmergeMe::binaryJacobsthalInsert(std::vector<int>& main, std::vector<int>& smaller) {
-
-	std::vector<int>::iterator	where;
-	int	index, current;
-	index = 0;
-	do {
-		index++;
-		current = (jacobsthal[index] < (int)smaller.size() ? jacobsthal[index] : smaller.size() - 1);
-		while (current > jacobsthal[index - 1]) {
-			where = std::lower_bound(main.begin(), main.end(), smaller[current]);
-			main.insert(where, smaller[current]); // vai para o fim 
-			current--; //diminiu
-		}
-	} while (jacobsthal[index] < (int)smaller.size());
+void PmergeMe::jacobsthalInsert(std::vector<int> &bigVec, std::vector<int> &smallVec) {
+    int j = 0; // Counter for the Jacobsthal sequence
+    int bigVecSize = bigVec.size();
+    
+    // Iterate over the elements of the smaller vector
+    for (unsigned int i = 0; i < smallVec.size(); ++i) {
+        // Calculate the position to insert using Jacobsthal sequence
+        int pos = jacobsthal(j);
+        
+        // Adjust the position if it exceeds the size of the big vector
+        if (pos >= bigVecSize)
+            pos = bigVecSize;
+        
+        // Use lower_bound to find the position to insert the element
+        std::vector<int>::iterator it = std::lower_bound(bigVec.begin(), bigVec.end(), smallVec[i]);
+        
+        // Insert the element from the smaller vector into the bigger vector at calculated position
+        bigVec.insert(it, smallVec[i]);
+        
+        // Increment the Jacobsthal sequence counter
+        ++j;
+    }
 }
 
 void    PmergeMe::divideNconquer(std::vector<int> &vec){
@@ -173,9 +182,11 @@ void PmergeMe::print_container(int x){
         for (std::vector<int>::iterator it = main_vector.begin() ; it != main_vector.end() ; it++)
             std::cout << *it << " ";
     }
-    else 
-    for (std::list<int>::iterator it = main_list.begin() ; it != main_list.end() ; it++)
-        std::cout << *it << " ";   
+    else{
+        for (std::list<int>::iterator it = main_list.begin() ; it != main_list.end() ; it++)
+            std::cout << *it << " ";   
+    }
+
 }
 
 void PmergeMe::print_vec(std::vector<int> vec){
@@ -185,4 +196,45 @@ void PmergeMe::print_vec(std::vector<int> vec){
             std::cout << *it << " ";
     std::cout << std::endl;
 
+}
+
+// ________________________________My bad didnt use Templates so I created same fucs for vec and list, dont judge me
+
+void    PmergeMe::divideNconquer(std::list<int> &vec){
+
+    unsigned int size = vec.size() - 1;
+    unsigned int i = 0;
+    std::list<int> tmp = vec;
+    vec.clear();
+   
+    /*while (i < size)
+    {
+        if (tmp[i] > tmp[i + 1]){
+            vec.push_back(tmp[i]);         
+            small_list.push_back(tmp[i + 1]);
+        }
+        else{
+            vec.push_back(tmp[i + 1]);
+            small_list.push_back(tmp[i]);
+        }
+        i += 2;
+    }*/
+    std::list<int>::iterator it = vec.begin();
+
+    while (it != (--vec.end())){ //check the ++ in it
+        std::list<int>::iterator tmp = it;
+        if (*tmp > ++*tmp){
+            vec.push_back(*it);
+            small_list.push_back(*it);
+        }
+        else{
+            vec.push_back(*tmp);
+            small_list.push_back(--*tmp);
+        }
+        it++;
+        it++;
+    }
+
+    if(vec.size() % 2)
+        vec.push_back(*(--vec.end())); // manda o ultimo, testa esse negocio nojento depois
 }

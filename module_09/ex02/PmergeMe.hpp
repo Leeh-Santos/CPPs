@@ -11,7 +11,6 @@
 class PmergeMe
 {
 private:
-    static const int	jacobsthal[35];
     std::vector<int> main_vector;
     std::vector<int> small_vector;
 
@@ -36,8 +35,10 @@ public:
     void divideNconquer(std::vector<int> &vec);
     void divideNconquer(std::list<int> &vec);
 
-    void	binaryJacobsthalInsert(std::vector<int>& base, std::vector<int>& merge);
     void insert_smallnb();
+
+    void jacobsthalInsert(std::vector<int> &bigVec, std::vector<int> &smallVec);
+    int jacobsthal(int n);
 };
 
 void checkInput( std::vector<std::string> &args);
