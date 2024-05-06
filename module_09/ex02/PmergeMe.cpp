@@ -73,6 +73,10 @@ void PmergeMe::m_init(){
     this->divideNconquer(main_vector);//split first the pairs
     this->recursive_main(main_vector); // recursive only main chain
     insert_smallnb(0); // insert smallest into main chain
+    std::cout << " big vec ---------------------------------> "  << std::endl;
+    print_vec(main_vector);
+    std::cout << " small vec ---------------------------------> "  << std::endl;
+    print_vec(small_vector);
     jacobsthalInsert(main_vector, small_vector); // binary + jacobsthal
 
     //exit(1);
@@ -142,10 +146,7 @@ void PmergeMe::jacobsthalInsert(std::vector<int> &bigVec, std::vector<int> &smal
     int bigVecSize = bigVec.size();
     
     // Iterate over the elements of the smaller vector
-    std::cout << " big vec ---------------------------------> "  << std::endl;
-    print_vec(bigVec);
-    std::cout << " small vec ---------------------------------> "  << std::endl;
-    print_vec(smallVec);
+
 
     std::vector<int> toInsert;
     for (unsigned int i = 0; i < smallVec.size(); i++) {
