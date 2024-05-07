@@ -18,7 +18,7 @@ private:
     std::list<int> small_list;
 
     int smallestpairnb;
-    
+    int flag;    
        
 public:
     
@@ -40,7 +40,12 @@ public:
 
     void jacobsthalInsert(std::vector<int> &bigVec, std::vector<int> &smallVec);
     void jacobsthalInsert(std::list<int> &bigVec, std::list<int> &smallVec);
-    int jacobsthal(int n);
+    //int jacobsthal(int n);
+
+    void insertNumber(std::vector<int> &vec, int n);
+    void insertNumber(std::list<int> &vec, int n);
+
+    void vec();
 };
 
 void checkInput( std::vector<std::string> &args);
