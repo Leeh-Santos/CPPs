@@ -1,5 +1,15 @@
 # include "RPN.hpp"
 
+
+rpn& rpn::operator=(const rpn& obj){
+    (void)obj;
+    return *this;
+}
+
+rpn::rpn(const rpn& obj){
+    *this = obj;
+}
+
 int rpn::calculator(int nb2, int nb, char c){
 
     switch (c)

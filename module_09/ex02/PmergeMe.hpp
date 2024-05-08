@@ -22,8 +22,13 @@ private:
        
 public:
     
+    PmergeMe();
     PmergeMe(std::vector<std::string> &vec);
+    PmergeMe& operator=(const PmergeMe& obj);
+    PmergeMe(const PmergeMe& obj);
+    
     ~PmergeMe();
+
     void m_init();
     void print_container(int);
     void getSmallElement(std::vector<int>);

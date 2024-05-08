@@ -1,5 +1,21 @@
 # include "PmergeMe.hpp"
 
+PmergeMe& PmergeMe::operator=(const PmergeMe& obj){
+    main_list = obj.main_list;
+    small_list = obj.small_list;
+    main_vector = obj.main_vector;
+    small_vector = obj.main_vector;
+
+    smallestpairnb = obj.smallestpairnb;
+    flag = obj.flag;
+
+    return *this;
+
+}
+PmergeMe::PmergeMe(const PmergeMe& obj){
+    *this = obj;
+}
+
 PmergeMe::PmergeMe(std::vector<std::string> &vec)
 {
     for(size_t i = 1; i < vec.size(); i++){

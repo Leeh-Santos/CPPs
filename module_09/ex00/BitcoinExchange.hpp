@@ -9,6 +9,8 @@
 #include <cstring>
 #include <ctime>
 
+#include <iomanip> 
+
 class BitcoinExchange
 {
 private:
@@ -18,6 +20,8 @@ private:
 public:
     BitcoinExchange(/* args */);
     ~BitcoinExchange();
+    BitcoinExchange& operator=(const BitcoinExchange& obj);
+    BitcoinExchange(const BitcoinExchange& obj);
 
     static bool valid_file(const std::string str, BitcoinExchange &obj);
     void do_conversion(const std::string input);

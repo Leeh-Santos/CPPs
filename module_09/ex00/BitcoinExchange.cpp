@@ -11,6 +11,17 @@ BitcoinExchange::~BitcoinExchange()
 {
 }
 
+BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& obj){
+    _database = obj._database;
+    indate = obj.indate;
+    invalue = obj.invalue;
+    return *this;
+}
+
+BitcoinExchange::BitcoinExchange(const BitcoinExchange& obj){
+    *this = obj;
+}
+
 bool BitcoinExchange::valid_file(const std::string str, BitcoinExchange &obj){
     std::ifstream in(str.c_str());
     std::ifstream database("data.csv");
@@ -101,6 +112,7 @@ void BitcoinExchange::do_conversion(const std::string input){
     std::ifstream in(input.c_str());
     std::string input_line;
     int lineflag = 0;
+    std::cout << std::fixed << std::setprecision(2);
 
     while(std::getline(in, input_line)){
         if (!lineflag){

@@ -8,6 +8,4 @@ int main(int argc, char *argv[]){
     }
     rpn::validString(argv[1]);
 
-
-
 }
