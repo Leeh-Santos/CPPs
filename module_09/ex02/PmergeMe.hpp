@@ -22,12 +22,12 @@ private:
        
 public:
     
-    PmergeMe();
+    PmergeMe(){};
     PmergeMe(std::vector<std::string> &vec);
     PmergeMe& operator=(const PmergeMe& obj);
     PmergeMe(const PmergeMe& obj);
     
-    ~PmergeMe();
+    ~PmergeMe(){};
 
     void m_init();
     void print_container(int);

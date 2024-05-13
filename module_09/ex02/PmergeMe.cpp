@@ -32,9 +32,6 @@ PmergeMe::PmergeMe(std::vector<std::string> &vec)
     flag = 0;
 }
 
-PmergeMe::~PmergeMe()
-{
-}
 
 void checkInput( std::vector<std::string> &args){
 
@@ -89,7 +86,7 @@ void PmergeMe::m_init(){
     this->divideNconquer(main_vector);//split first the pairs
     this->recursive_main(main_vector); // recursive only main chain
     insert_smallnb(0); // insert smallest into main chain
-    jacobsthalInsert(main_vector, small_vector); // binary + jacobsthal ta comendo um nuemro aqui 
+    jacobsthalInsert(main_vector, small_vector); // binary + jacobsthal ta comendo um nuemro aqui
     vec();
     std::time_t done = std::clock();
     double vector_process = (double)(done - begin) / CLOCKS_PER_SEC;
@@ -149,7 +146,7 @@ void PmergeMe::insertNumber(std::vector<int> &vec, int n) {
 void PmergeMe::jacobsthalInsert(std::vector<int> &bigVec, std::vector<int> &smallVec) {
 
     size_t jacobsthal[] = {
-        3, 5, 11, 21, 43, 85, 171, 341, 683, 1365, 2731, 5461, 10923, 21845
+        1, 3, 5, 11, 21, 43, 85, 171, 341, 683, 1365, 2731, 5461, 10923, 21845
     };
     
     if (!flag)
@@ -175,7 +172,7 @@ void PmergeMe::jacobsthalInsert(std::vector<int> &bigVec, std::vector<int> &smal
     std::cout << " small vec ---------------------------------> "  << std::endl;
     print_vec(small_vector);
     exit(1);*/
-    std::sort(bigVec.begin(), bigVec.end());
+   
 }
 
 
